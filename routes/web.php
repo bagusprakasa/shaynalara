@@ -19,4 +19,9 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::resource('/', DashboardController::class);
+
+
+Auth::routes();
+Route::middleware(['auth'])->group(function () {
+    Route::resource('/', DashboardController::class);
+});
