@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductGalleryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,9 +25,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::middleware(['auth'])->group(function () {
-    Route::resource('dashboard', DashboardController::class);
-    // Route::prefix('dashboard')->group(function () {
-    //     Route::resource('dashboard', DashboardController::class);
-    // });
+    Route::resource('/', DashboardController::class);
     Route::resource('products', ProductController::class);
+    Route::resource('product-galleries', ProductGalleryController::class);
 });

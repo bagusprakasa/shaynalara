@@ -3,7 +3,7 @@
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active">
-                    <a href="{{ route('dashboard.index') }}"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
+                    <a href="./"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
                 </li>
                 <li class="menu-title">Barang</li><!-- /.menu-title -->
                 <li class="">
@@ -15,10 +15,12 @@
 
                 <li class="menu-title">Foto Barang</li><!-- /.menu-title -->
                 <li class="">
-                    <a href="#"> <i class="menu-icon fa fa-list"></i>Lihat Foto Barang</a>
+                    <a href="{{ route('product-galleries.index') }}"> <i class="menu-icon fa fa-list"></i>Lihat Foto
+                        Barang</a>
                 </li>
                 <li class="">
-                    <a href="#"> <i class="menu-icon fa fa-plus"></i>Tambah Foto Barang</a>
+                    <a href="{{ route('product-galleries.create') }}"> <i class="menu-icon fa fa-plus"></i>Tambah Foto
+                        Barang</a>
                 </li>
 
                 <li class="menu-title">Transaksi</li><!-- /.menu-title -->
