@@ -27,9 +27,10 @@
                                     @forelse ($gallery as $item)
                                         <tr>
                                             <td>{{ $no++ }}</td>
-                                            <td>{{ $item->id_product }}</td>
-                                            <td>
-                                                <img src="{{ url($item->type) }}" alt="">
+                                            <td>{{ $item->product->name }}</td>
+                                            <td style="text-transform:lowercase">
+                                                <img src="{{ $item->photo }} " alt="">
+                                                {{-- {{ $item->photo }} --}}
                                             </td>
                                             <td>{{ $item->is_default ? 'Ya' : 'Tidak' }}</td>
                                             <td>

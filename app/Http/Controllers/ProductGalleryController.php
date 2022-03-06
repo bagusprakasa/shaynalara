@@ -20,9 +20,9 @@ class ProductGalleryController extends Controller
     {
         try {
             $getGalleryProduct = ProductGallery::with('product')->get();
-            json_decode($getGalleryProduct);
-            echo "<pre>";
-            print_r($getGalleryProduct);
+            // json_decode($getGalleryProduct);
+            // echo "<pre>";
+            // print_r($getGalleryProduct);
             $this->param['gallery'] = $getGalleryProduct;
         } catch (\Illuminate\Database\QueryException $e) {
             return $e->getMessage();
