@@ -20,8 +20,7 @@ class ProductController extends Controller
     public function index()
     {
         try {
-            $getProducts = Product::orderBy('id');
-            $this->param['product'] = $getProducts->paginate(10);
+            $this->param['product'] = Product::orderBy('id')->get();
         } catch (\Illuminate\Database\QueryException $e) {
             return back()->withError('Terjadi Kesalahan : ' . $e->getMessage());
         } catch (Exception $e) {
@@ -129,7 +128,7 @@ class ProductController extends Controller
         try {
             $item = Product::findOrFail($id);
             $item->delete();
-            // ProductGallery::where('products_id', $id)->delete();
+            ProductGallery::where('products_id', $id)->delete();
             return redirect()->route('products.index');
         } catch (\Illuminate\Database\QueryException $e) {
             return back()->withError('Terjadi Kesalahan : ' . $e->getMessage());
@@ -138,5 +137,15 @@ class ProductController extends Controller
         }
 
         return \view('pages.products.index', $this->param);
+    }
+
+    public function gallery(Request $request, $id)
+    {
+        $this->param['product'] = Product::findOrFail($id);
+        $this->param['items'] = ProductGallery::with('product')
+            ->where('products_id', $id)
+            ->get();
+
+        return \view('pages.products.gallery', $this->param);
     }
 }

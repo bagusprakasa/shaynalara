@@ -16,11 +16,11 @@
                 </a>
 
                 <div class="user-menu dropdown-menu">
-                    <a class="nav-link" item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                    <a class="nav-link" item" href="{{ url('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                         <i class="fa fa-power -off"></i>{{ __('Logout') }}
                     </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    <form id="logout-form" action="{{ url('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
                 </div>

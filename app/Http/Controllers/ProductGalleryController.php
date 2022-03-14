@@ -19,11 +19,11 @@ class ProductGalleryController extends Controller
     public function index()
     {
         try {
-            $getGalleryProduct = ProductGallery::with('product')->get();
+            $this->param['data'] = ProductGallery::with('product')->get();
             // json_decode($getGalleryProduct);
             // echo "<pre>";
             // print_r($getGalleryProduct);
-            $this->param['gallery'] = $getGalleryProduct;
+            // ddd($this->param['data']);
         } catch (\Illuminate\Database\QueryException $e) {
             return $e->getMessage();
         } catch (Exception $e) {
@@ -65,7 +65,6 @@ class ProductGalleryController extends Controller
                 'assets/product',
                 'public'
             );
-
             ProductGallery::create($data);
         } catch (\Illuminate\Database\QueryException $e) {
             return $e->getMessage();
@@ -73,7 +72,7 @@ class ProductGalleryController extends Controller
             return $e->getMessage();
         }
 
-        return \view('pages.product-galleries.index');
+        return redirect()->route('product-galleries.index');
     }
 
     /**
@@ -118,6 +117,15 @@ class ProductGalleryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $item = ProductGallery::findOrFail($id);
+            $item->delete();
+        } catch (\Illuminate\Database\QueryException $e) {
+            return back()->withError('Terjadi Kesalahan : ' . $e->getMessage());
+        } catch (Exception $e) {
+            return back()->withError('Terjadi Kesalahan : ' . $e->getMessage());
+        }
+
+        return redirect()->route('product-galleries.index');
     }
 }

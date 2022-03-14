@@ -23,9 +23,11 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Auth::routes();
+// Auth::routes();
 Route::middleware(['auth'])->group(function () {
+    Route::post('logout', ['as' => 'logout', 'uses' => 'LoginController@do']);
     Route::resource('/', DashboardController::class);
+    Route::get('products/{id}/gallery', [ProductController::class, 'gallery']);
     Route::resource('products', ProductController::class);
     Route::resource('product-galleries', ProductGalleryController::class);
 });

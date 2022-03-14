@@ -24,13 +24,12 @@
                                     @php
                                         $no = 1;
                                     @endphp
-                                    @forelse ($gallery as $item)
+                                    @forelse ($data as $item)
                                         <tr>
                                             <td>{{ $no++ }}</td>
                                             <td>{{ $item->product->name }}</td>
                                             <td style="text-transform:lowercase">
-                                                <img src="{{ $item->photo }} " alt="">
-                                                {{-- {{ $item->photo }} --}}
+                                                <img src="{{ $item->photo }}" alt="">
                                             </td>
                                             <td>{{ $item->is_default ? 'Ya' : 'Tidak' }}</td>
                                             <td>
